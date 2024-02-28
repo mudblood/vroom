@@ -4,54 +4,187 @@
 }
 
 @media screen and (max-width: 700px) {
-  .container{   
+  div.container {   
     flex-direction: column;
     gap:1px;
+    margin:0px;
+    width:100%;
+  }
+  div.side {
+    display:none;
+  }
+  div.menu {
+    display:inline-block;
+  }
+  div.image {
+    width:auto;
+    height:calc((100vw/4)*3);
+  }
+  body div.view {
+    border-radius:0px;
+    margin:0px;
   }
 }
 
 html, 
 body {
-  height: 100%;
+  max-width:100%;
+  overflow-x:hidden;
+  height:100vh;
 }
 
+.inclusive-sans-regular {
+  font-family: "Inclusive Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.inclusive-sans-regular-italic {
+  font-family: "Inclusive Sans", sans-serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+
 body {
-  font-family: sans-serif;
-  background-color: #444;
-  min-height: 100%;
+  text-rendering:optimizeLegibility;
+  font-family: Inclusive Sans, sans-serif;
+  background-color: black;
   margin:0 auto;
+  color: #FFF;
+  backdrop-filter: blur(10px);
+}
+
+.view {
+  display:flex;
+  flex:50%;
+  position:relative;
+  flex-direction:column;
+  border-radius:16px;
+  margin:24px;
+  padding:16px;
+}
+
+.planner {
+  display:flex;
+  background-color:red;
+  gap:1px;
+  width:600px;
+  height:400px;
+  background-image:url(https://cdn5.vectorstock.com/i/1000x1000/00/24/background-with-fishes-vector-2550024.jpg);
+  border-radius:8px;
+}
+
+
+p {
+   display:inline-block;
+   font-family: Inclusive Sans, sans-serif;
+   padding:0;
+   margin:0;
+}
+
+.spacer {
+  margin:20px;
+}
+
+.image {
+  width:400px;
+  height:300px;
+  background:pink;
+  display:flex;
 }
 
 h2 {
   font-weight:300;
-  font-size:21px;
+  font-size:17px;
   color:#fff;
   margin:0px;
 }
 
 h3 {
-  font-size:16px;
+  font-size:12px;
+  text-transform:uppercase;
   font-weight:400;
   margin:0px;
+}
+
+h4 {
+  font-size:12px;
+  font-weight:300;
+  margin:0;
 }
 
 li {
   display:flex;
   align-items:center;
+  font-size:12px;
+  color:#555;
+}
+
+.selected {
+  color:white;
+}
+
+.hideContent{
+  display:none;
 }
 
 li:hover {
-  background-color: #2c2c2c;
+  font-size:12px;
+  background-color: #544c21;
   cursor: pointer;
+  width:fit-content;
+}
+
+footer {
+  display:inline-flex;
+  flex-direction:row;
+  gap:8px;
+  width:100%;
+  justify-content:center;
 }
 
 ul {
-  font-size:15px;
+  font-size:12px;
   font-weight:300;
   list-style-type: none;
   padding-left:0px;
   margin:0px;
+  cursor:pointer;
 }
+
+.inbox {
+  padding:24px;
+}
+
+button {
+  background-color:#555;
+  color:white;
+  border:none;
+  appearance: none;
+  display:flex;
+  width:fit-content;
+  padding:8px;
+  margin:0;
+  border-radius:8px;
+}
+
+button:hover {
+  background-color:#121212;
+  cursor:pointer;
+  visibility:visible;
+  width:fit-content;
+  position:absolute;
+  padding:8px;
+  margin:0;
+  border-radius:8px;
+}
+
+.date {
+  display:flex;
+  align-items:center;
+}
+
 .icon {
   margin:12px;
   cursor:pointer;
@@ -63,21 +196,20 @@ ul {
   display: flex;
   flex-wrap: wrap;
   gap:1px;
+  margin:0 auto;
+  height:100%;
+  width:70%;
 }
 
-/*SIDE*/
-
 .side {
-  flex:20%;
-  border-radius:8px;
+  width:20%;
   display:flex;
   flex-direction:column;
   gap:1px;
 }
 
-.side * {
-  border-radius: 0px;
-  color: #fff;
+.margin {
+  margin-right:16px;
 }
 
 .list ul {
@@ -88,38 +220,74 @@ ul {
 
 
 .find {
-    background-color:#121212;
-    height:48px;
-    padding:12px;
+    background:none;
+    height:fit-content;
+    padding:24px;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.searchbox {
+    font-family: "Inclusive Sans", sans-serif;
+    font-size:12px;
+    border:none;
+    background:none;
+    width:100%;
+    text-transform: uppercase;
+    color:white;
 }
 
 .list {
-    background-color:#121212;
+    background:none;
     padding:24px;
     display:flex;
     flex-direction:column;
     gap:24px;
 }
 
-.list .flyer {
+.list-more {
+  display: none;
+  overflow: hidden;
+}
+
+.collapsible {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding:0;
+  background:none;
+}
+
+.flyer {
   height: 48px;
   width: 48px;
   background-color: #555;
-  display: inline-block;
+  display: none;
   margin-right:16px;
 }
 
 .avatar {
-  height: 48px;
-  width: 48px;
+  height: 24px;
+  width: 24px;
   background-color: #6215C4;
   border-radius: 50%;
   display: inline-block;
   margin:0;
 }
 
+.menu {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  display: inline-block;
+  margin:0;
+  position:absolute;
+  bottom:0;
+}
+
 .settings {
-  background-color:#121212;
+  background:none;
   padding:24px;
 }
 
@@ -129,42 +297,34 @@ ul {
   gap:16px;
 }
 
-/*SCHEDULE*/
-
-.view {
-  flex:50%;
-  display:flex;
-  flex-direction:column;
-  position:relative;
-}
-
-.date {
-  background-color: #121212;
-  padding:12px;
+.weekday {
   display:flex;
   flex-direction:row;
-  align-items:center;
+  background-color:gray;
+  height:60%;
+  gap:1px;
 }
 
-.planner {
-  background-color:#555;
-  width:100%;
-  height:100%;
+.one, .two, .three, .four, .five {
+ width:calc(100%/5);
+ background-color:#555;
+ padding:6px;
 }
 
-.view button {
-  visibility:hidden;
-  width:fit-content;
-  position:absolute;
-  left:24px;
-  bottom:24px;
+.weekend {
+  display:flex;
+  flex-direction:row;
+  background-color:gray;
+  height:40%;
+  gap:1px;
 }
 
-.view:hover button {
-  cursor:pointer;
-  visibility:visible;
-  width:fit-content;
-  position:absollute;
-  left:24px;
-  bottom:24px;
+.six, .sun {
+ width:calc(100%/2);
+ background-color:#555;
+ padding:6px;
+}
+
+input::placeholder {
+  color: white;
 }
