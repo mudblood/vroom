@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>glove</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <div class="glove">
+
+      <img src="assets/art.svg">
+
+      
+
+      <!-- <img src="assets/logos.svg">
+      <img src="assets/groudan.svg">
+      <div class="navigation">
+        <img src="assets/info.svg">
+        <img src="assets/accessory.svg">
+        <img src="assets/photos.svg">
+      </div>
+      <div class="nav">
+        <img src="assets/0.svg">
+        <img src="assets/1.svg">
+        <img src="assets/2.svg">
+        <img src="assets/3.svg">
+        <img src="assets/rand.svg">
+      </div>
+      <p id="current-year"></p> -->
+
+    </div>
+    
+    <script>
+      function romanize (num) {
+          if (!+num)
+              return false;
+          var digits = String(+num).split(""),
+              key    = ["","C","CC","CCC","CD","D","DC","DCC","DCCC","CM",
+                        "","X","XX","XXX","XL","L","LX","LXX","LXXX","XC",
+                        "","I","II","III","IV","V","VI","VII","VIII","IX"],
+              roman  = "",
+              i      = 3;
+          while (i--)
+              roman = (key[+digits.pop() + (i * 10)] || "") + roman;
+          return Array(+digits.join("") + 1).join("M") + roman;
+      }
+
+      const now = new Date();
+      let year = romanize(now.getFullYear());
+      document.getElementById("current-year").innerHTML = year;
+    </script>
+  </body>
+</html>

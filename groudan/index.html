@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Brian Groudan</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+
+  <body>
+    <div class="glove">
+
+      <img id="brian" src="assets/bg.svg">
+
+    </div>
+    
+    <script>
+      function romanize (num) {
+          if (!+num)
+              return false;
+          var digits = String(+num).split(""),
+              key    = ["","C","CC","CCC","CD","D","DC","DCC","DCCC","CM",
+                        "","X","XX","XXX","XL","L","LX","LXX","LXXX","XC",
+                        "","I","II","III","IV","V","VI","VII","VIII","IX"],
+              roman  = "",
+              i      = 3;
+          while (i--)
+              roman = (key[+digits.pop() + (i * 10)] || "") + roman;
+          return Array(+digits.join("") + 1).join("M") + roman;
+      }
+
+      const now = new Date();
+      let year = romanize(now.getFullYear());
+      document.getElementById("current-year").innerHTML = year;
+    </script>
+  </body>
+</html>
